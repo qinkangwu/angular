@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body>
+<h1 demo>我是H1</h1>
+                    <script>
+                    angular.module('kevinDemo',[])
+                            .directive('demo',function(){
+                                return {
+                                    link : function(scope,element,attr){
+                        element.on('mouseover',function(){
+                            element.css({'outline':'#abcdef dotted thick'});
+                        }).on('mouseout',function(){
+                            element.css({'outline':'none'});
+                        })
+                    }
+                }
+            })
+</script>
+</body>
+</html>

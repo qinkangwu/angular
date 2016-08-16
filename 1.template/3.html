@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body>
+<demo></demo>
+<div demo></div>
+                    <script>
+                    angular.module('kevinDemo',[])
+                            .directive('demo',function(){
+                                return {
+                                    restrict : 'EA',
+                                   template : '<h1>hello</h1>'
+                }
+            })
+</script>
+</body>
+</html>
