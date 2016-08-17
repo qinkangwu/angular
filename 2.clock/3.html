@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body ng-controller="time">
+
+时间的格式：<input type="text" ng-model="format"><br>
+当前时间：<span current-time="format"></span>
+<script>
+    angular.module('kevinDemo',[])
+            .controller('time',function($scope){
+                $scope.format = 'M/d/yy h:mm:ss a';
+            })
+            .directive('currentTime',function($interval,dateFilter){
+                return {
+                    link : function(scope,element,attrs){
+                        function updateTime(){
+                            element.text(dateFilter(new Date(),scope.format))
+                        };
+                        $interval(function(){
+                            updateTime();
+                        },1000)
+                    }
+                }
+            })
+</script>
+</body>
+</html>
