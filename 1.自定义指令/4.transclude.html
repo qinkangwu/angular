@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.js"></script>
+    <script src="../angular.js"></script>
+    <script src="../bootstrap.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css">
+</head>
+<body class="container">
+<dialog>
+    指定内部的内容
+</dialog>
+<script>
+angular.module('kevinDemo',[])
+        .directive('dialog',function(){
+            return {
+                replace : true,
+                transclude : true,
+                restrict : 'EA',
+               template : '<div class="panel panel-default"><div class="panel-heading">Panel heading without title</div><div class="panel-body" ng-transclude></div></div>'
+        }
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body ng-controller="kevinCtlr">
+<person name="zhangsan"></person>
+<person></person>
+                    <script>
+                    angular.module('kevinDemo',[])
+                            .controller('kevinCtlr',function($scope){
+                                $scope.zhangsan='张三';
+                                $scope.lisi='李四';
+                                $scope.greet=function(name,word){
+                                    alert(name+'   '+word);
+                                }
+                            })
+                            .directive('person',function(){
+                                return {
+                                    replace : true,
+                                    scope : true,
+                                    restrict : 'EA',
+                                   template : '<div>姓名:{{name}}</div>'
+                }
+            })
+</script>
+</body>
+</html>

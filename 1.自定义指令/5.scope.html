@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+</head>
+<body>
+<demo></demo>
+<demo></demo>
+<demo></demo>
+                    <script>
+                    angular.module('kevinDemo',[])
+                            .directive('demo',function(){
+                                return {
+                                    replace : true,
+                                    restrict : 'EA',
+                                   template : '<input ng-model="name" />'
+                }
+            })
+</script>
+</body>
+</html>
