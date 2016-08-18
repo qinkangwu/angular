@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kevinDemo">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../angular.js"></script>
+    <script src="../jquery.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <script src="../bootstrap.js"></script>
+</head>
+<body ng-controller="kevin">
+<div class="container">
+    <form name="userForm" novalidate="novalidate">
+        <div class="form-group" ng-class="{'has-success':userForm.email.$valid&&userForm.email.$dirty,'has-error':userForm.email.$invalid&&userForm.email.$dirty}">
+            <label for="email">邮箱：</label>
+            <input kevin-errors type="email" ng-minlength="10" name="email" id="email" class="form-control" ng-model="email" ng-required="true">
+        </div>
+        <div class="form-group">
+            <input type="button" class="btn btn-default" value="提交">
+        </div>
+    </form>
+</div>
+<pre>
+    {{userForm|json}}
+</pre>
+<script>
+    angular.module('kevinDemo',[])
+            .controller('kevin',function($scope){
+
+            })
+            .directive('kevinErrors',function(){
+                return {
+                    require:'ngModel',
+                    link : function (scope,element,attr,ngModelContl) {
+                        var subScope = scope.$new(true);
+                        subScope.hasError=function(){
+                            return ngModelContl.$invalid;
+                        };
+                        subScope.errors = function(){
+                            return ngModelContl.$error;
+                        };
+                        var tepl = '<p class="help-block" ng-show="hasError()" ng-repeat="(key,value) in errors()">{{key}}</p>';
+                        var message = $comopile(tepl)(subScope);
+                        element.after(message);
+                    }
+                }
+            })
+</script>
+</body>
+</html>
